@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import Add from './Add.jsx';
 import Stored from './Stored.jsx';
+import Search from './Search.jsx';
 import $ from 'jquery';
 
 const App = () => {
@@ -14,7 +15,7 @@ const App = () => {
       type:"POST",
       data: {'word': details.word, 'definition': details.definition},
       success: (response) => {
-        console.log('post success!');
+        //console.log('post success!');
         readWords((result) => {
           setWords(result);
         });
@@ -44,7 +45,20 @@ const App = () => {
         });
       }
     })
-  }
+  };
+
+  const filter = (searchInput) => {
+    readWords((result) => {
+      setWords(result);
+      var filteredWords = [];
+      for (var i = 0; i < words.length; i++) {
+        if (words[i].word.includes(searchInput)) {
+          filteredWords.push(words[i]);
+        }
+      }
+      setWords(filteredWords);
+    });
+  };
 
   useEffect(() => {
     readWords((result) => {
@@ -58,6 +72,7 @@ const App = () => {
     <div>
      <h1>Glossary App</h1>
      <Add submitAdd={submitAdd}/>
+     <Search filter={filter}/>
      <Stored words={words} deleteWord={deleteWord}/>
     </div>
   )

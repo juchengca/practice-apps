@@ -9,7 +9,6 @@ const Add = (props) => {
   })
 
   const handleChange = (e) => {
-    console.log(e.target.value);
     const name = e.target.name;
     const value = e.target.value;
     setDetails((prev) => {
