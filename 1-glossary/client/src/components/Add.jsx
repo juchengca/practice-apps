@@ -24,14 +24,16 @@ const Add = (props) => {
   return (
     <div>
     <h3>
-     Add new definition:
+    ADD NEW TERM
     </h3>
     <form onSubmit={handleSubmit}>
-        Word
+        Word<br></br>
         <input type="text" name="word" onChange={handleChange} />
-      Definition
+        <br></br>
+      Definition<br></br>
       <input type="text" name="definition" onChange={handleChange} />
-      <button type="submit">Submit Form</button>
+      <br></br>
+      <button type="submit">Submit</button>
     </form>
     </div>
   )

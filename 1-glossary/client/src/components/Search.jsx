@@ -13,12 +13,18 @@ const Search = (props) => {
     props.filter(searchField);
   };
 
+  const handleReset = () => {
+    props.reset();
+  }
+
   return (
     <div>
-     <h3>Search</h3>
+     <h3>SEARCH</h3>
      <form>
       <input onChange={handleChange}></input>
+      <br></br>
       <button onClick={handleClick}>Search</button>
+      <button onClick={handleReset}>Reset</button>
      </form>
     </div>
   )

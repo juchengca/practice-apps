@@ -12,7 +12,7 @@ const Stored = (props) => {
 
   return (
     <div>
-    <h3>Stored</h3>
+    <h3>GLOSSARY</h3>
       <ol>
       {words.map((word) =>
         <ul key={word._id}>
@@ -20,7 +20,6 @@ const Stored = (props) => {
             <br></br>
             Definition: {word.definition}
             <br></br>
-            <button>Edit</button>
             <button key={word} onClick={() => {props.deleteWord(word)}}>Delete</button>
       </ul>)}
     </ol>

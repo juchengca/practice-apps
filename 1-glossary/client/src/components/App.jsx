@@ -24,7 +24,6 @@ const App = () => {
   };
 
   const readWords = (callback) => {
-
     $.ajax({
       url:'/read',
       type:"GET",
@@ -48,17 +47,20 @@ const App = () => {
   };
 
   const filter = (searchInput) => {
+    var filteredWords = [];
+    for (var i = 0; i < words.length; i++) {
+      if (words[i].word.includes(searchInput)) {
+        filteredWords.push(words[i]);
+      }
+    }
+    setWords(filteredWords);
+  };
+
+  const reset = () => {
     readWords((result) => {
       setWords(result);
-      var filteredWords = [];
-      for (var i = 0; i < words.length; i++) {
-        if (words[i].word.includes(searchInput)) {
-          filteredWords.push(words[i]);
-        }
-      }
-      setWords(filteredWords);
     });
-  };
+  }
 
   useEffect(() => {
     readWords((result) => {
